@@ -6,6 +6,7 @@
  #define DHTPIN D5
  #define DHTTYPE DHT11
  DHT dht(DHTPIN, DHTTYPE);
+ FuelGauge fuel;
 
  // Initialize objects from the lib
  Custom_SSD1306 oled;
@@ -24,6 +25,7 @@
  }
 
  void loop() {
+   float c = fuel.getSoC();
    float h = dht.getHumidity();
    float t = dht.getTempCelcius();
    float f = dht.getTempFarenheit();
@@ -33,7 +35,7 @@
    oled.drawCenteredString(9, String::format("{Hum: %4.2f,}", h));
    oled.drawCenteredString(18, String::format("{Temp: %4.2f,}", f));
    oled.drawCenteredString(27, String::format("{DP: %4.2f,}", dp));
-   oled.drawCenteredString(36, String::format("{HI: %4.2f}", hi));
+   oled.drawCenteredString(36, String::format("{CHARGE: %4.2f}", c));
    oled.drawCenteredString(45, "Refreshing in 10");
    oled.display();
    delay(1000);
