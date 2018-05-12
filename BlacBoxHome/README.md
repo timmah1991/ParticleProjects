@@ -2,12 +2,18 @@
 
 A Particle project named BlacBoxHome
 
+Sensor List
+MQ4 Gas Sensor
+PIR Motion Sensor
+RobotDyn Sound Sensor
+DHT22 Temp/Humidity Sensor
+
 ## Welcome to your project!
 
 Every new Particle project is composed of 3 important elements that you'll see have been created in your project directory for BlacBoxHome.
 
 #### ```/src``` folder:  
-This is the source folder that contains the firmware files for your project. It should *not* be renamed. 
+This is the source folder that contains the firmware files for your project. It should *not* be renamed.
 Anything that is in this folder when you compile your project will be sent to our compile service and compiled into a firmware binary for the Particle device that you have targeted.
 
 If your application contains multiple files, they should all be included in the `src` folder. If your firmware depends on Particle libraries, those dependencies are specified in the `project.properties` file referenced below.
@@ -33,3 +39,24 @@ When you're ready to compile your project, make sure you have the correct Partic
 - Everything in the `/src` folder, including your `.ino` application file
 - The `project.properties` file for your project
 - Any libraries stored under `lib/<libraryname>/src`
+
+
+int sensorPin = A8; 	// select the input pin for the sensor
+int sensorval = 0; 		// variable to store the value coming from the sensor
+
+void setup() {
+}
+
+void loop() {
+
+sensorval = analogRead(sensorPin); // read the value from the sensor
+Serial.println(sensorval); // send it to the computer (as ASCII digits)
+
+if (sensorval > 10) {digitalWrite(led1, HIGH); }
+if (sensorval > 20) {digitalWrite(led2, HIGH); }
+if (sensorval > 30) {digitalWrite(led3, HIGH); }
+if (sensorval > 40) {digitalWrite(led4, HIGH); }
+if (sensorval > 50) {digitalWrite(led5, HIGH); }
+if (sensorval > 60) {digitalWrite(led6, HIGH); }
+delay(1);
+}﻿
