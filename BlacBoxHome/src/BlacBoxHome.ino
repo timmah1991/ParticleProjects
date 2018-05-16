@@ -56,6 +56,8 @@ void loop() {
   //Keep checking the sensors for a count and call emergencyNotify if any reading is above alert spec
   for (int i=1; i <= NumberLoops; i++){
 
+    //TODO add a counter/timer for spacing DHT22 queries out by >2 seconds
+
     //Read from DHT
     float h = dht.getHumidity();
     float t = dht.getTempCelcius();
@@ -98,15 +100,15 @@ void emergencyNotify(int alertlevel){
       break;
     case 2:
       // Send sound notify
-      Particle.publish("DataFromBBH", "BlacBoxHome Device Has Detected a Loud Noise");
+      Particle.publish("ALERTFromBBH", "BlacBoxHome Device Has Detected a Loud Noise");
       break;
     case 3:
       // Send temp notify
-      Particle.publish("DataFromBBH", "BlacBoxHome Device Has Exceeded Temperature Threshold");
+      Particle.publish("ALERTFromBBH", "BlacBoxHome Device Has Exceeded Temperature Threshold");
       break;
     case 4:
       // Send gas notify
-      Particle.publish("DataFromBBH", "BlacBoxHome Device Has Detected a Gas Leak");
+      Particle.publish("ALERTFromBBH", "BlacBoxHome Device Has Detected a Gas Leak");
       break;
       //TODO send power disconnected notify
     default:
