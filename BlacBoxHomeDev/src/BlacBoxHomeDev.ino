@@ -42,3 +42,13 @@
       delay(times);
    }
 }
+
+void checkMotion() {
+  if (digitalRead(D0) == HIGH) {
+    Particle.publish("Motion","Detected",60); //publish an event
+    blinkitbitch(25, 50);
+    delay(1000);
+      while (digitalRead(D0) == HIGH); // wait for the sensor to return back to normal
+      }
+    digitalWrite(D7,LOW);
+  }
