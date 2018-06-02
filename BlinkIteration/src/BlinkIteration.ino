@@ -5,26 +5,25 @@ void setup() {
 
 void loop() {
   //newfunction(1000000, 10000);
-  blinkitbitch(1000,50000);
+  //blinkitbitch(1000,50000);
+  blinkdecay(1500,15000);
+  delay(1000);
+  blinkdecay(2000,5000);
+  delay(1000);
+  blinkdecay(500,20000);
+  delay(1000);
 }
 
-void blinkitbitch(int times, int counts){
-  for (int i=1; i <= counts; i++){
+void blinkdecay(float initial, float duration){
+  float a = initial / duration;
+  float y = initial;
+  float t = 0;
+  while( y > 15 ){
+    y = initial - (a * t);
     digitalWrite(D7, HIGH);
-    delay(times);
+    delay(y);
     digitalWrite(D7, LOW);
-    delay(times);
-    times = times * .9;
-  }
-}
-
-void newfunction(int counts, float stop){
-  float times = 1000 ;
-  for (int i=1; i <= counts; i++){
-    times= -(1/stop)*(i-1)+times;
-    digitalWrite(D7, HIGH);
-    delay(times);
-    digitalWrite(D7, LOW);
-    delay(times);
+    delay(y);
+    t += 2 * y;
   }
 }
