@@ -27,7 +27,7 @@ void loop() {
 	Particle.publish("DataFromDHT11_Electron", String::format("{\"Hum(\%)\": %4.2f, \"Temp(°F)\": %4.2f, \"DP(°C)\": %4.2f, \"HI(°C)\": %4.2f}", h, f, dp, hi));
 
   blinkitbitch(500, 4);
- 	delay(5000);
+ 	delay(10000);
  }
 
 void blinkitbitch(int times, int counts){
