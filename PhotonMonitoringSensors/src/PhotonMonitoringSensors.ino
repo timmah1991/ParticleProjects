@@ -42,7 +42,7 @@ void loop() {
   Particle.publish("DataFromDHT22_PhotonS2", String::format("{\"Hum(\%)\": %4.2f, \"Temp(°F)\": %4.2f, \"DP(°C)\": %4.2f, \"HI(°C)\": %4.2f}", h2, f2, dp2, hi2));
 
   blinkitbitch(500, 4);
- 	delay(2000);
+ 	delay(10000);
  }
 
 void blinkitbitch(int times, int counts){
